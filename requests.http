@@ -1,0 +1,132 @@
+### 
+
+@jwt = {{login.response.body.$.jwt}}
+
+# @name register
+POST http://localhost:8000/api/register
+Content-Type: application/json
+
+{
+    "name": "Test",
+    "email": "test1@example.com",
+    "password": "test1"
+}
+
+
+### 
+# @name login
+POST http://localhost:8000/api/login
+Content-Type: application/json
+
+{
+    "email": "test2@example.com",
+    "password": "test"
+}
+
+
+
+##################################################
+### SURVEYS
+##################################################
+
+
+###
+# @name getAllSurvey
+GET http://localhost:8000/api/survey
+Authorization: Bearer {{jwt}}
+
+
+###
+# @name getSingleSurvey
+GET http://localhost:8000/api/survey/5f2a2e3000af635800e48aec
+Authorization: Bearer {{jwt}}
+
+###
+# @name createSurvey
+POST http://localhost:8000/api/survey
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+    "name": "Survey 2",
+    "description": "lorem ipsum"
+}
+
+###
+# @name updateSurvey
+PUT http://localhost:8000/api/survey/5f2a2e3000af635800e48aec
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+    "name": "Survey 6",
+    "description": "lorem ipsum"
+}
+
+
+###
+# @name deleteSurvey
+DELETE  http://localhost:8000/api/survey/5f2a2e3000af635800e48aec
+Authorization: Bearer {{jwt}}
+
+
+##################################################
+### QUESTIONS
+##################################################
+
+###
+# @name getQuestionsBySurvey
+GET http://localhost:8000/api/survey/5f2a2e3000af635800e48aec/questions
+Authorization: Bearer {{jwt}}
+
+###
+# @name createQuestion
+POST http://localhost:8000/api/survey/5f2a2e3000af635800e48aec
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+    "text": "How much you like Deno?",
+    "type": "choice",
+    "required": true,
+    "data" : {
+        "multiple": false,
+        "answers": [
+            "I like it very much",
+            "I like it",
+            "I don't like it",
+            "I hate it"
+        ]
+    }
+}
+
+###
+# @name getSingleQuestion
+GET http://localhost:8000/api/survey/5f2a2e3000af635800e48aec/questions/5f2a3b4f00d88e8000bfefe6
+Authorization: Bearer {{jwt}}
+
+###
+# @name updateQuestion
+PUT http://localhost:8000/api/survey/5f2a2e3000af635800e48aec/questions/5f2a3b4f00d88e8000bfefe6
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+    "text": "How much you like TypeScript?",
+    "type": "choice",
+    "required": true,
+    "data" : {
+        "multiple": false,
+        "answers": [
+            "I like it very much",
+            "I like it",
+            "I don't like it",
+            "I hate it"
+        ]
+    }
+}
+
+###
+# @name deleteQuestion
+DELETE http://localhost:8000/api/survey/5f2a2e3000af635800e48aec/questions/5f2a3b4f00d88e8000bfefe6
+Authorization: Bearer {{jwt}}

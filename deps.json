@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "oak": "https://deno.land/x/oak@v6.0.1/mod.ts",
+    "fmt/": "https://deno.land/std@0.61.0/fmt/",
+    "mongo": "https://deno.land/x/mongo@v0.9.1/mod.ts",
+    "bcrypt": "https://deno.land/x/bcrypt@v0.2.3/mod.ts",
+    "djwt/": "https://deno.land/x/djwt@v1.0/",
+    "testing/": "https://deno.land/std@0.61.0/testing/"
+  }
+}
